@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('student.event')" :active="request()->routeIs(student.'event')">
                         {{ __('進路相談を設定する') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('student.event')" :active="request()->routeIs(student.'event')">
+                        {{ __('進路相談を設定する') }}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 
