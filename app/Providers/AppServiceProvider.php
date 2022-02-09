@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         //
         Model::unguard();
 
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
         //管理者権限
         // Gate::define('admin',  function (User $user){
         //     return $user->username === 'Kaito';
