@@ -51,14 +51,6 @@
                                 type="password"
                                 name="password_confirmation" required />
             </div>
-
-            <!-- 属性を確認 -->
-            <div class="mt-4">
-                <x-label for="roles" :value="__('所属')" />
-                {!! Form::select('roles', [1=>'高校生',2=>'大学生・専門学生', 3=>'大学院生',4=>'社会人'],  null,['class' => 'rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50']) !!}
-
-            </div>
-
             
 
             <div class="flex items-center justify-end mt-4">

@@ -39,13 +39,14 @@
                         <img src="../images/lary-avatar.svg" alt="Lary avatar">
                         <div class="ml-2">
                             <div class="ml-3">
-                                <h5 class="font-bold"><a href={{ route('supporter.sessions.detail', auth()->user()->id) }}>{{ $session->supporter->name }}</a></h5>
+                                    <h5 class="font-bold"><a href={{ route('student.profile.detail', $session->supporter->id) }}>{{ $session->supporter->name }}</a></h5>                                
+
                                 <h6 class="w-32">{{ $session->company_name }}</h6>
                             </div>
                     </div>
 
                     <div>
-                        <a href={{ route('supporter.sessions.detail', auth()->user()->id) }}
+                        <a href={{ route('student.profile.detail', $session->supporter->id) }}
                            class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
                         >Read More</a>
                     </div>

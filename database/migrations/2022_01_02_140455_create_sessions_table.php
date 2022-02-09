@@ -16,7 +16,13 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('supporter_id')->unique();
-            $table->foreignId('meeting_id')->unique();
+            //Zoom設定
+            // $table->foreignId('meeting_id')->unique();
+            $table->timestamp('start_at')->unique();
+            // $table->longText('zoom_meeting_id');
+            // $table->longText('zoom_join_url');
+            // $table->longText('zoom_start_url');
+            // $table->longText('zoom_password');
             // $table->foreignId('category_id');
             //基本情報
             $table->string('slug')->nullable();//スラッグ

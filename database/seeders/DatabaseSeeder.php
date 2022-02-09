@@ -5,7 +5,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Session;
-use App\Models\User;
+use App\Models\Meeting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
 
          $this->call(TagSeeder::class);
-
+         $this->call(MeetingSeeder::class);
         // $user = User::factory()->create();
 
         // $healthcare = Category::create([

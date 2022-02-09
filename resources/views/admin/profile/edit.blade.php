@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- ：がないと、文字列、あるとPHPになる --}}
     <x-setting heading="自分史編集"  :session="$session">
-        <form action="/admin/sessions/{{ $session->id }}" method="post" enctype="multipart/form-data">
+        <form action="route{{ route('supporter.profile.update', [$session->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="bg-blue-50 my-6 p-3 text-left rounded-xl"> 

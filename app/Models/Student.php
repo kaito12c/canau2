@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Student extends Authenticatable implements MustVerifyEmail
+class Student extends Authenticatable //implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -47,5 +47,11 @@ class Student extends Authenticatable implements MustVerifyEmail
     public function sessions()
     {
         return $this->hasOne(Session::class);
+    }
+
+    public function comments()
+    {
+        //hasOne hasMany BelongsTo BelongsMany
+        return $this->hasMany(Comment::class);
     }
 }

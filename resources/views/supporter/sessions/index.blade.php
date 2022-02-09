@@ -17,7 +17,7 @@
                     @if ($sessions->count())
                         <div class="lg:grid lg:grid-cols-3">
                             @foreach ($sessions as $session)
-                            <x-session-card :session="$session"/>
+                            <x-supporter-session-card :session="$session"/>
 
                             @endforeach
                         </div>

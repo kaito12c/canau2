@@ -3,7 +3,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center py-6 sm:pt-0 bg-gray-100">
         <div class="text-xl font-bold my-8 text-blue-400">自分図鑑登録</div>
         <div class="w-full sm:max-w-lg mt-2 px-4 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" heading="自分史登録">
-            <form action="/admin/sessions" method="post" enctype="multipart/form-data">
+            <form action="//sessions" method="post" enctype="multipart/form-data">
                 @csrf
                 <x-profile-topic>基本情報</x-profile-topic>
                 {{-- <x-form.input name="name"  placeholder="山田 叶"/> --}}
@@ -39,7 +39,7 @@
                 {{-- </select>
                     <x-form.error name="生き方"/>
                 </x-form.field> --}}
-                <div class="grid grid-cols-8 gap-8">
+                {{-- <div class="grid grid-cols-8 gap-8">
                     <div class="col-span-8 sm:col-span-8 lg:col-span-2">
                         <label for="city" class="block text-sm font-medium text-gray-700">City</label>
                         <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -58,54 +58,7 @@
                         <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
                         <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
-                </div>
-                <div class="grid grid-cols-8 gap-8">
-                    <div class="col-span-8 sm:col-span-8 lg:col-span-2">
-                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                        <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-        
-                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
-                        <input type="text" name="region" id="region" autocomplete="address-level1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-        
-                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <x-profile-topic>進路相談可能日</x-profile-topic>
-                    <label for="advise_day" name="advise_day" class="block my-2 font-bold text-xs text-gray-700">下記の選択肢からオンラインで進路相談可能な日を選択してください。</label>
-                    <select id="advise_day" name="advise_day" name="advise_day" 
-                            autocomplete="advise_day" 
-                            class="rounded-md shadow-sm border-gray-300 
-                                    focus:border-indigo-300 focus:ring 
-                                    focus:ring-indigo-200 focus:ring-opacity-50 w-full p-2">
-                      <option>2021-02-07-16:00-16:20</option>
-                      <option>2021-02-07-16:30-16:50</option>
-                      <option>2021-02-07-17:00-17:20</option>
-                      <option>2021-02-07-17:30-17:50</option>
-                      <option>2021-02-07-18:00-18:20</option>
-                      <option>2021-02-07-18:30-18:50</option>
-                      <option>2021-02-07-19:00-19:20</option>
-                      <option>2021-02-07-19:30-19:50</option>
-                      <option>2021-02-08-16:00-16:20</option>
-                      <option>2021-02-08-16:30-16:50</option>
-                      <option>2021-02-08-17:00-17:20</option>
-                      <option>2021-02-08-17:30-17:50</option>
-                      <option>2021-02-08-18:00-18:20</option>
-                      <option>2021-02-08-18:30-18:50</option>
-                      <option>2021-02-08-19:00-19:20</option>
-                      <option>2021-02-08-19:30-19:50</option>
-                      <option>Mexico</option>
-                    </select>
-                  </div>
+                </div> --}}
 
                 <x-form.button>完了</x-form.button>
             </form>

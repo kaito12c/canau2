@@ -18,9 +18,9 @@
                     <a href="/admin/sessions" class="{{ request()->is('admin/sessions') ? 'text-blue-500' : ''}}">進路相談日設定</a>
                 </li>
             </ul>
-            @if ("/admin/sessions/{{ $session->id }}/edit")
+            {{-- @if ("/admin/sessions/{{ $session->id }}/edit")
 
-            @endif
+            @endif --}}
 
         </aside>
         <main class="flex-1">

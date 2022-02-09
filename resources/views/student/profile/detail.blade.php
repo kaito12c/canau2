@@ -12,7 +12,7 @@
             <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
                 <article class="max-w-6xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                     <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                        <img src="{{ asset('storage/' . $session->supporter_image) }}" alt="" class="px-1 rounded-xl ">
+                        <img src="{{ asset('storage/' . $session->first()->supporter_image) }}" alt="" class="px-1 rounded-xl ">
 
                         {{-- <p class="mt-4 block text-gray-400 text-xs">
                             Published <time>1 day ago</time>
@@ -21,37 +21,36 @@
                         <div class="flex text-center lg:justify-center text-sm mt-4">
                             {{-- <img src="../images/lary-avatar.svg" alt="Lary avatar"> --}}
                             <div class="ml-3 text-center">
-                                <h5 class="font-bold text-xl">{{ $session->supporter->name }}</h5>
-                                <h6>{{ $session->company_name }}</h6>
+                                <h5 class="font-bold text-xl">{{ $session->first()->name }}</h5>
+                                <h6>{{ $session->first()->company_name }}</h6>
                             </div>
                         </div>
                         <div class="bg-blue-50 my-6 p-3 text-left rounded-xl"> 
                             <div class="font-bold text-xl my-2">プロフィール</div>
                                 <x-profile-topic>基本情報 </x-profile-topic>
-                                <div class="text-sm pt-2">出身：{{ $session->supporter->name }}</div>
-                                <div class="text-sm pt-2">居住地：{{ $session->supporter->name }}</div>
-                                <div class="text-sm pt-2">会社名：{{ $session->company_name }}</div>
-                                <div class="text-sm pt-2">肩書き：{{ $session->title }}</div>
+                                <div class="text-sm pt-2">出身：{{ $session->first()->name }}</div>
+                                <div class="text-sm pt-2">居住地：{{ $session->first()->name }}</div>
+                                <div class="text-sm pt-2">会社名：{{ $session->first()->company_name }}</div>
+                                <div class="text-sm pt-2">肩書き：{{ $session->first()->title }}</div>
                                 <x-profile-topic>中学時代</x-profile-topic>
-                                <div class="text-sm pt-2">学校名：{{ $session->supporter->name }}中学校</div>
-                                <div class="text-sm pt-2">部活動{{ $session->supporter->name }}</div>
+                                <div class="text-sm pt-2">学校名：{{ $session->first()->name }}中学校</div>
+                                <div class="text-sm pt-2">部活動{{ $session->first()->name }}</div>
                                 <div class="text-sm pt-2">習い事・課外活動： 文字数が多い場合はどうなるんだろう？？</div>
                                 <x-profile-topic>高校時代 </x-profile-topic>
                                 <div class="text-sm pt-2">学校名：立命館慶祥中学校・高等学校</div>
-                                <div class="text-sm pt-2">部活動：{{ $session->supporter->name }}</div>
-                                <div class="text-sm pt-2">習い事・課外活動：{{ $session->supporter->name }}</div>
+                                <div class="text-sm pt-2">部活動：{{ $session->first()->name }}</div>
+                                <div class="text-sm pt-2">習い事・課外活動：{{ $session->first()->name }}</div>
                                 <x-profile-topic>大学時代</x-profile-topic>
                                 <div class="text-sm pt-2">大学名：立命館大学</div>
                                 <div class="text-sm pt-2">学部・学科名：国際関係学部国際関係学科</div>
                                 <div class="text-sm pt-2">課外活動(アルバイト・インターン含む)</div>
-                                <div class="text-sm">{{ $session->supporter->name }}</div>
+                                <div class="text-sm">{{ $session->first()->name }}</div>
                                 <x-profile-topic>一言Q&A</x-profile-topic>
-                                <div class="text-sm pt-2">オススメ本：</div>
-                                <div class="text-sm pt-2">オススメ映画：</div>
-                                <div class="text-sm pt-2">オススメYouTube：</div>
-                                <div class="text-sm pt-2">オススメスポット：</div>
-                                <div class="text-sm pt-2">気分転換の方法：</div>
-                                <div class="text-sm">{{ $session->supporter->name }}</div>
+                                <div class="text-sm pt-2">オススメ本：{{ $session->first()->recommend_book }}</div>
+                                <div class="text-sm pt-2">オススメ映画：{{ $session->first()->recommend_movie }}</div>
+                                <div class="text-sm pt-2">オススメYouTube：{{ $session->first()->recommend_youtube }}</div>
+                                <div class="text-sm pt-2">オススメスポット：{{ $session->first()->recommend_spot }}</div>
+                                <div class="text-sm pt-2">気分転換の方法：{{ $session->first()->refresh }}</div>
 
 
                         </div>
@@ -80,68 +79,58 @@
                         </div>
 
                         <h1 class="font-bold text-3xl lg:text-4xl mt-8 px-3">
-                            {{ auth()->user()->name }}さんのMy Ansewer
+                            {{ $session->first()->supporter->name }}さんのMy Ansewer
                         </h1>
-                        <p class="text-xl mt-2 px-3">{{ $session->title }}</p>
+                        <p class="text-xl mt-2 px-3">{{ $session->first()->title }}</p>
                         <div class="px-3">
                             <x-answer-topic>中高時代の振り返りQ&A</x-answer-topic>
                                 <x-question>Q1.中高時代にやってよかったと思うことは？</x-question>
-                                <x-answer>これがマイアンサー。ここは自由に書いていいところ。あなたの言葉が子供を救う。そう本気で思うおとなにきてほしいと思っています。待ちしております。 </x-answer>
+                                <x-answer>{{ $session->first()->good_todo }} </x-answer>
                                 <x-question>Q2.中学生にうちにやっておけばよかったと思うことは？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->recommend_todo }}</x-answer>
                                 <x-question>Q3.今、高校１年生（16歳）の自分にメッセージを伝えるとしたら？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->myself_todo }}</x-answer>
                             <x-answer-topic>「働く」を切り取るQ&A</x-answer-topic>
                                 <x-question>Q4.今の仕事を選んだきっかけは？？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->why_now_work }}</x-answer>
                                 <x-question>Q5.あなたにとって「働く」とは？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->what_work }}</x-answer>
                                 <x-question>Q6.働いていてやりがいを感じる瞬間はいつですか？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->reward_work }}</x-answer>
                             <x-answer-topic>価値観深掘りQ&A</x-answer-topic>
                                 <x-question>Q7.過去にあった悩み・コンプレックスはどう解決してきましたか？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->solve_complex }} </x-answer>
                                 <x-question>Q8.「これに出会って自分は変わった！」と思えるもの（人）は何（誰）ですか？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->change_myself }}</x-answer>
                                 <x-question>Q9.あなたが、あと６ヶ月しか生きられないとしたら何をしますか？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->six_month_todo }}</x-answer>
                                 <x-question>Q10.死ぬまでに実現したいことは？</x-question>
-                                <x-answer>これがマイアンサー </x-answer>
+                                <x-answer>{{ $session->first()->todo_till_death }}</x-answer>
                                 <x-answer-topic>最後に、進路に悩む10代にメッセージを</x-answer-topic>
-                                <x-answer>これがマイアンサー </x-answer>
-                                <!-- Begin TimeRex Widget -->
-                                <div id="timerex_calendar" data-url="https://timerex.net/s/canauteam/b144df12"></div>
-
-                                <script id="timerex_embed" src="https://asset.timerex.net/js/embed.js"></script>
-
-                                <script type="text/javascript">
-                                TimerexCalendar();
-                                </script>
-                                <!-- End TimeRex Widget -->
-                                <div id="timerex_calendar" data-url="https://timerex.net/s/canauteam/b144df12"></div>
-
-                                <script id="timerex_embed" src="https://asset.timerex.net/js/embed.js"></script>
-
-                                <script type="text/javascript">
-                                TimerexCalendar();
-                                </script>
+                                <x-answer>{{ $session->first()->last_message }}</x-answer>
+                                <x-answer-topic>マイタグ</x-answer-topic>
+                                <div>Coming soon...</div>
                                 <!-- End TimeRex Widget -->
                                 
-                                <div class="py-3">
-                                    <x-answer-topic>{{ auth()->user()->name }}さんに進路相談する</x-answer-topic>
-                                    <x-question>進路相談実施日</x-question>
-                                    <p class="px-2">
-                                        2/1(火)16:00〜16:30
-                                    </p>
-                                    <div class="flex justify-end px-2">
-                                        <x-form.button>進路面談する</x-form.button>
-                                    </div>
-                                </div>
+                                <section class="py-3">
+                                    <x-answer-topic>{{ $session->first()->supporter->name }}さんに進路相談する</x-answer-topic>
+                                        <form action="{{ route('student.session.resister', $session->first()->supporter->id) }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-check d-flex justify-content-between">
+                                                    <input class="form-check-input" type="radio" id="{{ $session->first()->start_at }}" name="{{ $session->first()->start_at }}" value=" {{ $session->first()->start_at }}">
+                                                    <label value="{{ $session->first()->start_at }}" for="{{ $session->first()->start_at }}">
+                                                    {{ $session->first()->start_at }}                                           
+                                                    </label>
+                                                <x-form.button>申し込む</x-form.button>
+                                            </div>
+                                        </form>
+                                </section>
                         </div>
                     </div>
+
                     <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                        @include('sessions._add-comment-form')
-                    @foreach ($session->comments as $comment )
+                        @include('student.profile._add-comment-form')
+                    @foreach ($session->first()->comments as $comment )
                     <x-session-comment :comment="$comment"/>
 
                     @endforeach

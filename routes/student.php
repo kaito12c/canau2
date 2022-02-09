@@ -28,12 +28,16 @@ Route::get('/', function () {
 
 //top page(StudentSessionController)
 Route::get('/sessions', [StudentSessionController::class, 'index'])
-->middleware(['auth:students', 'verified'])->name('student.sessions');
+->middleware(['auth:students'])->name('sessions');  // 'verified'
 
     //サポーターの詳細
-Route::get('/sessions/{id}',[StudentSessionController::class, 'detail'])
+Route::get('/profile/{id}',[StudentSessionController::class, 'detail'])
 ->middleware(['auth:students'])
-->name('sessions.detail');
+->name('profile.detail');
+
+Route::post('/profile/{id}/resister',[StudentSessionController::class, 'resister'])
+->middleware(['auth:students'])
+->name('session.resister');
 
 //サポーター一覧
 Route::get('/sessions/all/sessions',[StudentSessionController::class, 'show'])
@@ -44,7 +48,7 @@ Route::get('/sessions/all/sessions',[StudentSessionController::class, 'show'])
 // ->where('adviser', '[A-z\-]+');
 
 //コメントを送信する場合
-Route::post('sessions/{session:slug}/comments', [SessionCommentsController::class, 'store']);
+Route::post('/profile/{id}/comments', [SessionCommentsController::class, 'store']);
 
 
 // Route::get('reservation', 'ReservationController@create'); // 入力フォーム
@@ -56,21 +60,20 @@ Route::middleware('admin:students')->group(function(){
     // Route::resource('admin/sessions', AdminSessionController::class);
 
     //サポーターの情報登録
-    Route::get('admin/sessions/create',[StudentProfileController::class, 'create'])
+    Route::get('profile/create',[StudentProfileController::class, 'create'])
     ->middleware('verified')
-    ->name('admin.sessions.create');
+    ->name('student.sessions.create');
 
-    // Route::get('/admin/calendar', function () {
-    //     return view('admin.schedule.calendar');
+    // Route::get('/student/calendar', function () {
+    //     return view('student.schedule.calendar');
     // });
 
     //マイページ
     //進路相談日一覧
-    Route::post('admin/sessions/',[StudentProfileController::class, 'store'])
+    Route::post('profile/create',[StudentProfileController::class, 'store'])
     ->name('sessions.store');
-
         //進路相談日一覧
-        Route::get('admin/sessions/',[StudentProfileController::class, 'index'])
+        Route::get('student/sessions/',[StudentProfileController::class, 'index'])
         ->name('sessions.index');
 
     // //進路相談日削除
@@ -84,15 +87,15 @@ Route::middleware('admin:students')->group(function(){
 
     //サポーターの情報編集
     Route::get('/sessions/{session}/edit',[StudentProfileController::class, 'edit'])
-    ->name('sessions.edit');
+    ->name('profile.edit');
 
     //サポーターの情報更新
     Route::patch('/sessions/{session}',[StudentProfileController::class, 'update'])
-    ->name('sessions.update');
+    ->name('profile.update');
 
     //サポーターの情報削除
     Route::delete('admin/sessions/{session}',[StudentProfileController::class, 'destroy'])
-    ->name('sessions.destroy');
+    ->name('profile.destroy');
 
     //サポーター一覧
     // Route::post('sessions/all-supporters',[SupporterController::class, 'index']);

@@ -1,8 +1,8 @@
-@props(['name'])
+@props(['name' =>'$supporters->name', 'label' => 'あ'])
 
 <x-form.field>
     <div class="mb-3">
-        <x-form.label name="{{ $name }}" for="__('$name')"/>
+        <x-form.label name="{{ $label }}" for="__('$name')"/>
 
         <input   
         name="{{ $name }}"
@@ -11,7 +11,6 @@
             focus:border-indigo-300 focus:ring focus:ring-indigo-200 
             focus:ring-opacity-50 w-full p-1"
         {{ $attributes(['value' => old($name)]) }}
-        required
         >
         <x-form.error name="{{ $name }}" />
     </div>

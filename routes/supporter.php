@@ -34,7 +34,7 @@ Route::get('/sessions', [SupporterSessionController::class, 'index'])
 //サポーターの詳細
 Route::get('sessions/{id}',[SupporterSessionController::class, 'detail'])
 ->middleware(['auth:supporters'])
-->name('sessions.detail');
+->name('profile.detail');
 
 //サポーター一覧
 Route::get('/sessions/all/sessions',[SupporterSessionController::class, 'show'])
@@ -144,17 +144,17 @@ Route::post('/reset-password', [NewPasswordController::class, 'store'])
                 ->middleware('guest')
                 ->name('password.update');
 
-Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
-                ->middleware('auth:supporters')
-                ->name('verification.notice');
+// Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
+//                 ->middleware('auth:supporters')
+//                 ->name('verification.notice');
 
-Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-                ->middleware(['auth:supporters', 'signed', 'throttle:6,1'])
-                ->name('verification.verify');
+// Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+//                 ->middleware(['auth:supporters', 'signed', 'throttle:6,1'])
+//                 ->name('verification.verify');
 
-Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware(['auth:supporters', 'throttle:6,1'])
-                ->name('verification.send');
+// Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+//                 ->middleware(['auth:supporters', 'throttle:6,1'])
+//                 ->name('verification.send');
 
 Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
                 ->middleware('auth:supporters')

@@ -1,11 +1,9 @@
     {{-- ここはいつか移し替えるコメント入力欄 --}}
-@auth
     <x-panel>
-        <form action="/sessions/{{ $session->slug }}/comments" method="post">
+        <form action="/student/profile/{{ $session->first()->id }}/comments" method="post">
             @csrf
             <header class="flex items-center">
-                <img src="https://i.pravatar.cc/60?u={{ auth()->id() }}" alt="" width='40' height="40" class="rounded-full">
-                <h2 class="ml-4">{{ auth()->user()->name }}さんに質問する</h2>
+                <h2 class="ml-4">{{ $session->first()->supporter->name }}さんに質問する</h2>
             </header>
             <div class="mt-6">
                 <textarea 
@@ -18,6 +16,8 @@
                     <span class="text-sm text-red-500">{{ $message }}</span>
                     @enderror
             </div>
+            <input type="hidden"  name="session_id" value="{{ $session->first()->id }}"/>
+            <input type="hidden"  name="student_id" value="{{ Auth()->user()->id}}"/>
             <div class="flex justify-end">
                 <x-form.button>投稿</x-form.button>
             </div> 
@@ -27,9 +27,3 @@
 
             </form>
     </x-panel>
-
-@else
-    <p>
-        <a href="/login">ログインすると、コメントが見られるようになります。</a>
-    </p>
-@endauth

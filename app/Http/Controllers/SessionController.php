@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Session;
+use App\Models\Category;
+use App\Models\Supporter;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -26,12 +27,13 @@ class SessionController extends Controller
 
     public function detail($id)
     {
+        $supporter = Supporter::findOrFail($id->supporter_id);
         $session = Session::find($id);
         if(is_null($session)){
             return redirect(route('student.sessions'))->with('success', 'データがありません。');
         }
 
-        return view('student.profile.detail',  ['session' => $session]);
+        return view('student.profile.detail',  ['session' => $session, 'supporter' => $supporter]);
     }
 
     public function show()

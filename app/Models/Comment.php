@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Session;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,14 +11,17 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function session()
+    protected  $guarded = [];
+
+
+    public function sessions()
     {
-        return $this->belongsTo(Session::class);
+        return $this->belongsTo(Session::class, 'session_id');
 
     }
 
-    public function supporter()
+    public function students()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(Student::class,'student_id');
     }    
 }

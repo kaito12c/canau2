@@ -15,16 +15,12 @@
                     <x-nav-link :href="route('student.sessions')" :active="request()->routeIs('student.sessions')">
                         {{ __('トップページ') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('student.sessions.all-sessions')" :active="request()->routeIs('student.sessions.all-sessions')">
+                    {{-- <x-nav-link :href="route('student.sessions.all-sessions')" :active="request()->routeIs('student.sessions.all-sessions')">
                         {{ __('面白大人図鑑') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('student.event')" :active="request()->routeIs(student.'event')">
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link :href="route('student.event')" :active="request()->routeIs(student.'event')">
                         {{ __('進路相談を設定する') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('student.event')" :active="request()->routeIs(student.'event')">
-                        {{ __('進路相談を設定する') }}
-                    </x-nav-link>
-                    
+                    </x-nav-link> --}}
                 </div>
             </div>
 

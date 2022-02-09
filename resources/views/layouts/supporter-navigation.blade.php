@@ -15,9 +15,9 @@
                     <x-nav-link :href="route('supporter.sessions')" :active="request()->routeIs('supporter.sessions')">
                         {{ __('トップページ') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('supporter.all-sessions')" :active="request()->routeIs('supporter.all-sessions')">
+                    {{-- <x-nav-link :href="route('supporter.all-sessions')" :active="request()->routeIs('supporter.all-sessions')">
                         {{ __('面白大人図鑑') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     {{-- <x-nav-link :href="route('supporter.event')" :active="request()->routeIs('supporter.event')">
                         {{ __('進路相談を設定する') }}
                     </x-nav-link> --}}
@@ -53,14 +53,14 @@
                        
                                         </div>
                                 </x-slot>
-                                <x-slot name="event">
+                                {{-- <x-slot name="event">
                                     <div>
                                         <x-dropdown-link :href="route('supporter.event')"
                                             :active="request()->routeIs('supporter.event')">
                                             {{ __('進路相談をセッティングする') }}
                                         </x-dropdown-link>                            
                                     </div>
-                                </x-slot>
+                                </x-slot> --}}
                         <x-slot name="content">
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('supporter.logout') }}">

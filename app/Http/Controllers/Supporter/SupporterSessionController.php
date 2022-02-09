@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Supporter;
 use App\Models\Tag;
 use App\Models\Session;
 use App\Models\Category;
+use App\Models\Supporter;
+use App\Mail\RegisterMail;
+use App\Jobs\RegisteredMail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Facade\FlareClient\Http\Response;
 
 class SupporterSessionController extends Controller
@@ -29,7 +34,15 @@ class SupporterSessionController extends Controller
 
     public function detail(Session $id)
     {
+
+
         $session = Session::find($id);
+        return [
+            $session => 'nullable',
+            $session->first()->start_at => 'nullable',
+            $session->first()->comments => 'nullable',
+
+        ];
         if(is_null($session)){
             return redirect(route('supporter.sessions'))->with('success', 'データがありません。');
         }
@@ -52,5 +65,7 @@ class SupporterSessionController extends Controller
             'tags' =>  $tags
         ]);
     }
+
+
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Comment;
+use App\Models\Meeting;
 use App\Models\Student;
 use App\Models\Supporter;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +14,11 @@ class Session extends Model
     use HasFactory;
 
     protected  $guarded = [];
+    /**
+     * ネイティブなタイプへキャストする属性
+     *
+     * @var array
+     */
 
     // protected $fillable = ['title', 'company_name', 'body', 'id'];
 
@@ -44,7 +51,7 @@ class Session extends Model
     public function comments()
     {
         //hasOne hasMany BelongsTo BelongsMany
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Comment::class);
     }
 
     public function category()
@@ -56,7 +63,7 @@ class Session extends Model
     public function supporter()
     {
         //hasOne hasMany BelongsTo BelongsMany
-        return $this->belongsTo(Supporter::class);
+        return $this->belongsTo(Supporter::class, 'supporter_id');
     }
 
     public function student()
@@ -74,7 +81,14 @@ class Session extends Model
     public function tags()
     {
         //hasOne hasMany BelongsTo BelongsMany
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'tag_user');
+    }
+
+
+    public function meeting()
+    {
+        //hasOne hasMany BelongsTo BelongsMany
+        return $this->hasMany(Meeting::class);
     }
 
 }

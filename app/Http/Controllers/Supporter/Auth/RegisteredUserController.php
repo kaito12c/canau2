@@ -53,7 +53,6 @@ class RegisteredUserController extends Controller
 
 
         event(new Registered($user));
-        ddd($user);
 
         //ログイン済みの場合
         Auth::login($user);

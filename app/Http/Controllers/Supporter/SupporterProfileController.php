@@ -2,41 +2,53 @@
 
 namespace App\Http\Controllers\Supporter;
 
-use App\Models\Supporter;
-use App\Models\Session;
 use App\Models\Tag;
+use App\Models\Meeting;
+use App\Models\Session;
+use App\Models\Supporter;
+use App\Mail\RegisterMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+use App\Jobs\RegisteredMail;
+
 
 class SupporterProfileController extends Controller
 {
     public function index()
     {
+
+
         return view('supporter.profile.index',[
             // auth()->user()=今ログイン中のモデル
             //ユーザーが持つsessionを取得
             //first() =登録された一番最初のもの 
             'session' => auth()->user()->sessions->first()
+
+            
         ]);
     }
 
     public function create()
     {
+        $meetings = Meeting::orderBy('start_at')->get();
         $session = auth()->user()->first();
+        $supporters  = Supporter::get();
         $tags = Tag::orderBy('name')->get();
-        return view('supporter.profile.create', compact('tags', 'session'));     
+        return view('supporter.profile.create', compact('tags', 'session', 'meetings', 'supporters'));     
            
 
     }
 
-    public function store(Session $session)
+    public function store(Session $id)
     {
         $attributes = request()->validate([
             // 'supporter_id' => 'required',
             // 'name' => 'required',
-            // ddd($session),
             'company_name' => 'required',
             'title' => 'required',
             // 'slug' => ['required', Rule::unique('sessions', 'slug')->ignore($session)],
@@ -46,39 +58,54 @@ class SupporterProfileController extends Controller
             'reward_work' => 'required',
             'solve_complex' => 'required',
             'last_message' => 'required',
+            'start_at' => 'required',
+            // 'job_tag' => 'required',
+            // 'advice_tag' => 'required',
             // preg_match_all()
+            // dd(request())
+
         ]);
+        // ddd($attributes);
+
         $attributes['supporter_id'] =  auth()->user()->id; 
         $attributes['supporter_image'] = request()->file('supporter_image')->store('supporter_images');
+        // $attributes['supporter_image'] = array_merge('start_at', 'job_tag', 'advice_tag');
+        // dd($attributes);
+        // 'start_at' = toArray(); 
+        Session::create($attributes);
+        // ddd($attributes);
+        //非同期に送信
+        $supporter = Supporter::findOrFail(Auth::id());
+        $name = $supporter['name'];
+        $email = $supporter['email'];
+        // dd($session);
 
-        $session = Session::create($attributes);
-        $session->tags()->attach(request()->job_tag);
-            
+        Mail::send(new RegisterMail($name, $email));
+        // $session->tags()->attach(request()->job_tag);
         return redirect()
-        ->route('supporter.sessions.detail', auth()->user()->id)
-        ->with('success', 'プロフィールを作成しました！ありがとうございます！');
+        ->route('supporter.sessions.detail', Auth()->user()->id)
+        ->with('success', 'プロフィールを作成しました！残りの情報はマイページから追加して下さい！');
     
     }
 
-    public function edit(Session $session)
+    public function edit($id)
     {     
-        $session = Session::find($session->title);     
-        if (auth()->user()->$session == NULL){
+        $session = Session::find($id);     
+        if ($session == NULL){
             $tags = Tag::orderBy('id')->get();
             return redirect()
             ->route('supporter.profile.create');
 
         }
-        $tags = Tag::orderBy('id')->get();
 
-        ddd($session);
-        // 
+
         return view('supporter.profile.edit', [
-   
-            'session' => $session,
-            'tags' => $tags
+            // $tags = Tag::orderBy('name'),
+            'session' => $session
+            // 'tags' => $tags
         ]);
 
+       
     }
 
      public function update(Session $session)
@@ -95,6 +122,9 @@ class SupporterProfileController extends Controller
             'reward_work' => 'required',
             'solve_complex' => 'required',
             'last_message' => 'required',
+            'start_at' => 'required',
+            'job_tag' => 'required',
+            'advice_tag' => 'required',
             // 'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
 

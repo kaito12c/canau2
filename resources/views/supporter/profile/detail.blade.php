@@ -108,6 +108,15 @@
                                 <x-answer-topic>最後に、進路に悩む10代にメッセージを</x-answer-topic>
                                 <x-answer>{{ $session->first()->last_message }}</x-answer>
                                 <x-answer-topic>マイタグ</x-answer-topic>
+                                <div>Coming soon...</div>
+                                <x-answer-topic>進路相談を申し込む</x-answer-topic>
+                                <div class="text-xm font-bold">進路相談可能日時</div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="text-xl mx-6 mt-3"> {{ $session->first()->start_at }}</div>
+                                    <form action="/supporter/profile/create" method="post" enctype="multipart/form-data">
+                                    </form>
+                                </div>
+
                                 {{-- @foreach ($session->first()->job_tags as $job_tag )
                                     <div>{{ $job_tag }}</div>
                                 @endforeach
@@ -115,13 +124,13 @@
 
                         </div>
                     </div>
-                    <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                    {{-- <section class="col-span-8 col-start-5 mt-10 space-y-6">
                         @include('supporter.profile._add-comment-form')
                     @foreach ($session->first()->comments as $comment )
                     <x-session-comment :comment="$comment"/>
 
                     @endforeach
-                    </section>
+                    </section> --}}
                     
                 </div>
                         

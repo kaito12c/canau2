@@ -21,9 +21,9 @@ class RouteServiceProvider extends ServiceProvider
     public const STUDENT = '/student/sessions';
     public const SUPPORTER = '/supporter/sessions';
     public const ADMIN =  "/admin/sessions";
-    public const STUDENT_CREATE = '/student/sessions/create';
-    public const SUPPORTER_CREATE = '/supporter/sessions/create';
-    public const ADMIN_CREATE =  "/admin/sessions/create";
+    public const STUDENT_CREATE = '/student/profile/create';
+    public const SUPPORTER_CREATE = '/supporter/profile/create';
+    public const ADMIN_CREATE =  "/admin/profile/create";
 
 
     /**
