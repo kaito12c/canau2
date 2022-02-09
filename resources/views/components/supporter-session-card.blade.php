@@ -1,7 +1,7 @@
  @props(['session'])   
     <article class ="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
         {{-- {{ $attributes->merge(['class' =>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl' ])}} --}}
-        <div class="py-6 px-5">
+        <div class="py-6 px-3">
             <div>
                 <img src="{{ asset('storage/' . $session->supporter_image) }}" alt="Blog Post illustration" class="rounded-xl">
             </div>
@@ -36,7 +36,7 @@
 
                 <footer class="flex justify-between items-center mt-6">
                     <div class="flex items-center text-sm">
-                        <img src="../images/lary-avatar.svg" alt="Lary avatar">
+                        <img src="../images/logo_tate_only" alt="Lary avatar" width="80">
                         <div class="ml-2">
                             <div class="ml-3">
                                 <h5 class="font-bold"><a href={{ route('supporter.profile.detail', $session->first()->supporter->id) }}>{{ $session->supporter->name }}</a></h5>
@@ -46,7 +46,7 @@
 
                     <div>
                         <a href={{ route('supporter.profile.detail', $session->supporter->id) }}
-                           class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
+                           class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-4"
                         >Read More</a>
                     </div>
                 </footer>
