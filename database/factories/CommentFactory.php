@@ -16,9 +16,9 @@ class CommentFactory extends Factory
     {
         return [
             //
-            'session_id' => Session::factory(),
-            'user_id' =>  Session::factory(),
-            'body' => $this->faker->paragraph()
+            // 'session_id' => Session::factory(),
+            // 'user_id' =>  Session::factory(),
+            // 'body' => $this->faker->paragraph()
         ];
     }
 }
