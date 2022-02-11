@@ -3,7 +3,7 @@
         {{-- {{ $attributes->merge(['class' =>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl' ])}} --}}
         <div class="py-6 px-3">
             <div>
-                <img src="{{ asset('.storage/' . $session->supporter_image) }}" alt="Blog Post illustration" class="rounded-xl">
+                <img src="../storage/{{ $session->first()->supporter_image }}" alt="Blog Post illustration" class="rounded-xl">
             </div>
 
             <div class="mt-4 flex flex-col justify-between">
