@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- ：がないと、文字列、あるとPHPになる --}}
     <x-setting heading="自分史編集"  :session="$session">
-        <form action="{{ route('supporter.profile. update', $session->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('supporter.profile.update', $session->supporter->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="bg-blue-50 my-6 p-3 text-left rounded-xl"> 
@@ -16,7 +16,7 @@
                     <div class="flex-1 mr-6">
                     <x-form.input name="supporter_image"  label="プロフィール画像"  type="file" :value="old('supporter_image', $session->supporter_image)"/>
                     </div>
-                    <img src="{{ asset('storage/' . $session->supporter_image) }}" alt="" class="rounded-xl" width="150">
+                    <img src="{{ asset('storage/' . $session->first()->supporter_image) }}" alt="" class="rounded-xl" width="150">
                 </div> 
                 <div class="flex mr-6">
                     <div class="flex mr-6">

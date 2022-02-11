@@ -95,7 +95,7 @@
                                     focus:border-indigo-300 focus:ring 
                                     focus:ring-indigo-200 focus:ring-opacity-50 w-full p-2">
                     @foreach ($meetings as $meeting)
-                    <option value="{{$meeting->smeeting->tart_at}}" id="{{$meeting->smeeting->tart_at}}">{{ $meeting->meeting->start_at_jp }}</option>
+                    <option value="{{$meeting->start_at}}" id="{{$meeting->start_at}}">{{ $meeting->start_at_jp }}</option>
                     @endforeach
                     </select>
                   </div>

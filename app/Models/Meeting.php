@@ -24,6 +24,6 @@ class Meeting extends Model
     public function session()
     {
         //hasOne hasMany BelongsTo BelongsMany
-        return $this->hasOne(Session::class, 'session_id');
+        return $this->hasOne(Session::class);
     }
 }

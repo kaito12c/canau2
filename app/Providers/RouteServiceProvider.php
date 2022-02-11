@@ -25,7 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     public const SUPPORTER_CREATE = '/supporter/profile/create';
     public const ADMIN_CREATE =  "/admin/profile/create";
 
-
     /**
      * The controller namespace for the application.
      *

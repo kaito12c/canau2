@@ -86,6 +86,7 @@ class StudentProfileController extends Controller
         if(isset($attributes['supporter_image'])){
             $attributes['supporter_image'] = request()->file('supporter_image')->store('supporter_images');
         }       
+
         $session->update($attributes);
 
         return back()->with('success', 'プロフィールを更新しました！充実させていただきありがとうございます！');

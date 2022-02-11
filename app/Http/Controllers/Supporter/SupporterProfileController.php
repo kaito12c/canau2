@@ -116,21 +116,22 @@ class SupporterProfileController extends Controller
             'company_name' => 'required',
             'title' => 'required',
             // 'slug' => ['required', Rule::unique('sessions', 'slug')->ignore($session)],
-            'supporter_image' => 'required', 'image',
             'good_todo' => 'required',
             'recommend_todo' => 'required',
             'reward_work' => 'required',
             'solve_complex' => 'required',
             'last_message' => 'required',
-            'start_at' => 'required',
-            'job_tag' => 'required',
-            'advice_tag' => 'required',
+            // 'start_at' => 'required',
+            // 'job_tag' => 'required',
+            // 'advice_tag' => 'required',
             // 'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
 
         if(isset($attributes['supporter_image'])){
             $attributes['supporter_image'] = request()->file('supporter_image')->store('supporter_images');
-        }       
+        } 
+        // ddd($attributes);
+
         $session->update($attributes);
 
         return back()->with('success', 'プロフィールを更新しました！充実させていただきありがとうございます！');
