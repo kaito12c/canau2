@@ -18,7 +18,7 @@ class CreateSessionsTable extends Migration
             $table->foreignId('supporter_id')->unique();
             //Zoom設定
             // $table->foreignId('meeting_id')->unique();
-            $table->timestamp('start_at')->unique();
+            $table->timestamp('meeting_id')->unique();
             // $table->longText('zoom_meeting_id');
             // $table->longText('zoom_join_url');
             // $table->longText('zoom_start_url');

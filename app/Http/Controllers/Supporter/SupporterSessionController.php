@@ -37,12 +37,12 @@ class SupporterSessionController extends Controller
 
 
         $session = Session::find($id);
-        return [
-            $session => 'nullable',
-            $session->first()->start_at => 'nullable',
-            $session->first()->comments => 'nullable',
+        // return [
+        //     $session => 'nullable',
+        //     $session->first()->start_at => 'nullable',
+        //     $session->first()->comments => 'nullable',
 
-        ];
+        // ];
         if(is_null($session)){
             return redirect(route('supporter.sessions'))->with('success', 'データがありません。');
         }

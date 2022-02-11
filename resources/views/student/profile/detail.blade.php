@@ -12,7 +12,7 @@
             <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
                 <article class="max-w-6xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                     <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                        <img src="{{ asset('storage/' . $session->first()->supporter_image) }}" alt="" class="px-1 rounded-xl ">
+                        <img src="/storage/{{ $session->first()->supporter_image }}" alt="" class="px-1 rounded-xl ">
 
                         {{-- <p class="mt-4 block text-gray-400 text-xs">
                             Published <time>1 day ago</time>
@@ -128,13 +128,13 @@
                         </div>
                     </div>
 
-                    <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                    {{-- <section class="col-span-8 col-start-5 mt-10 space-y-6">
                         @include('student.profile._add-comment-form')
                     @foreach ($session->first()->comments as $comment )
                     <x-session-comment :comment="$comment"/>
 
                     @endforeach
-                    </section>
+                    </section> --}}
                     
                 </div>
                         

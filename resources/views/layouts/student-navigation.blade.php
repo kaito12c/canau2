@@ -43,7 +43,7 @@
                             </button>
                         </x-slot>
                             {{-- @admin --}}
-                                <x-slot name="profile">
+                                {{-- <x-slot name="profile">
                                         <div>
                                             <x-dropdown-link :href="route('student.sessions.index')"
                                                 :active="request()->routeIs('student.sessions.index')">
@@ -58,7 +58,7 @@
                                             {{ __('進路相談をセッティングする') }}
                                         </x-dropdown-link>                            
                                     </div>
-                                </x-slot>
+                                </x-slot> --}}
                             {{-- @endadmin --}}
                         <x-slot name="content">
                             <!-- Authentication -->

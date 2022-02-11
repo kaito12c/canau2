@@ -88,7 +88,7 @@ class Session extends Model
     public function meeting()
     {
         //hasOne hasMany BelongsTo BelongsMany
-        return $this->hasMany(Meeting::class);
+        return $this->belongsTo(Meeting::class, 'meeting_id');
     }
 
 }

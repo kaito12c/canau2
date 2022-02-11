@@ -16,7 +16,7 @@ class MustBeAdministrator
      */
     public function handle(Request $request, Closure $next)
     {
-        ddd($request);
+        // ddd($request);
         // if (auth()->user()?->username == 'Kaito'){
         //     abort(304);
         // }

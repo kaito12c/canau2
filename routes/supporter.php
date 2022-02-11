@@ -53,11 +53,12 @@ Route::post('sessions/{session:slug}/comments', [SessionCommentsController::clas
 
 
 //サポーター登録(SupporterProfileController)
-Route::middleware('auth:supporters')->group(function(){
+// Route::middleware('auth:supporters')->group(function(){
     // Route::resource('admin/sessions', AdminSessionController::class);
 
     //サポーターの情報登録
     Route::get('/profile/create',[SupporterProfileController::class, 'create'])
+    ->middleware(['auth:supporters']) //, 'verified'
     // ->middleware('verified')
     ->name('profile.create');
 
@@ -68,6 +69,7 @@ Route::middleware('auth:supporters')->group(function(){
     //マイページ
     //進路相談日一覧
     Route::post('/profile/create',[SupporterProfileController::class, 'store'])
+    ->middleware(['auth:supporters']) //, 'verified'
     ->name('profile.store');
 
     //進路相談日一覧
@@ -76,6 +78,8 @@ Route::middleware('auth:supporters')->group(function(){
  
     //サポーターの情報編集
     Route::get('profile/{id}/edit',[SupporterProfileController::class, 'edit'])
+    ->middleware(['auth:supporters']) //, 'verified'
+
     ->name('profile.edit');
 
     //サポーターの情報更新
@@ -89,7 +93,7 @@ Route::middleware('auth:supporters')->group(function(){
 
 
 
-});
+// });
 
 //下記からZoom接続について
 Route::get('/event', function () {

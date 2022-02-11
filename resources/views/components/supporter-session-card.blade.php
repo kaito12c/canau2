@@ -3,7 +3,7 @@
         {{-- {{ $attributes->merge(['class' =>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl' ])}} --}}
         <div class="py-6 px-3">
             <div>
-                <img src="{{ asset('storage/' . $session->supporter_image) }}" alt="Blog Post illustration" class="rounded-xl">
+                <img src="/storage/{{ $session->first()->supporter_image }}" alt="Blog Post illustration" class="rounded-xl">
             </div>
 
             <div class="mt-4 flex flex-col justify-between">
@@ -26,17 +26,17 @@
 
                 <div class="text-sm mt-4 space-y-4">
                     <p>
-                        {{ $session->last_message }}
+                        {{ $session->start_at}}
                     </p>
 
                     <p class="mt-4">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        {{ $session->last_message }}
                     </p>
                 </div>
 
                 <footer class="flex justify-between items-center mt-6">
                     <div class="flex items-center text-sm">
-                        <img src="../images/logo_tate_only" alt="Lary avatar" width="80">
+                        <img src="../images/logo_tate_only.png" alt="Lary avatar" width="80">
                         <div class="ml-2">
                             <div class="ml-3">
                                 <h5 class="font-bold"><a href={{ route('supporter.profile.detail', $session->first()->supporter->id) }}>{{ $session->supporter->name }}</a></h5>

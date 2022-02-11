@@ -6,7 +6,7 @@
 
 <div class="text-xm border-b">オンライン進路相談</div>
 <div>進路相談相手：{{ $SupName }}</div>
-<p>{{ $SupName }}さんの</p><a href="{{ route('supporter.sessions.detail', $id->id) }}">プロフィールはこちら</a>
+<p>{{ $SupName }}さんの</p><a href="{{ route('supporter.profile.detail', $id->id) }}">プロフィールはこちら</a>
 <div>日時：{{ $start_at }}</div>
 <div>会社名：{{ $company_name }}</div>
 <div>肩書き：{{ $title }}</div>

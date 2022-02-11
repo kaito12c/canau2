@@ -34,13 +34,12 @@ class SupporterProfileController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Supporter $id)
     {
         $meetings = Meeting::orderBy('start_at')->get();
-        $session = auth()->user()->first();
-        $supporters  = Supporter::get();
-        $tags = Tag::orderBy('name')->get();
-        return view('supporter.profile.create', compact('tags', 'session', 'meetings', 'supporters'));     
+        $session = Supporter::find($id);
+        // $tags = Tag::orderBy('name')->get();
+        return view('supporter.profile.create', compact( 'session', 'meetings'));     
            
 
     }
@@ -84,7 +83,7 @@ class SupporterProfileController extends Controller
         Mail::send(new RegisterMail($name, $email));
         // $session->tags()->attach(request()->job_tag);
         return redirect()
-        ->route('supporter.sessions.detail', Auth()->user()->id)
+        ->route('supporter.profile.detail', Auth()->user()->id)
         ->with('success', 'プロフィールを作成しました！残りの情報はマイページから追加して下さい！');
     
     }
@@ -146,54 +145,4 @@ class SupporterProfileController extends Controller
      }
 
 
-    public function attributes()
-    {
-        return [
-            'name' => '名前',
-            'birthday' => '誕生日',
-            'email' => 'メールアドレス',
-            'password' => 'パスワード',
-            //基本情報
-            'birth_where' =>  '出身',
-            'now_where' =>  '居住地',
-            'supporter_image' =>  'トップ画',
-            'company_name' => '会社名',
-            'title' =>  '肩書き',
-            //中学時代
-            'jhs_name' => '学校名',
-            'jhs_club' => '部活動',
-            'jhs_activities' => '課外活動',
-            //高校時代
-            'hs_name' => '学校名',
-            'hs_course' => 'コース',
-            'hs_club' => '部活動',
-            'hs_activities' => '課外活動',
-            //大学時代
-            'uni_name' => '大学名',
-            'uni_course' =>'学部名',
-            'uni_activities' =>  '課外活動',
-            'uni_work' =>  'アルバイトやインターン',
-            //一言Q&A
-            'recommend_book'  => 'オススメ本',
-            'recommend_movie' =>  'オススメ映画',
-            'recommend_youtube' =>  'オススメYouTube',
-            'recommend_spot' =>  'オススメスポット',
-            'refresh' =>  'オススメ気分転換方法',
-            //中高時代の振り返りQ&A
-            'good_todo' =>  'Q1.中高時代にやってよかったと思うことは何ですか？',
-            'recommend_todo' =>  '高校生の時にやっておけばよかったと思うことは何ですか？',
-            'myself_message' =>  'Q3.今、高校１年生（16歳）の自分にメッセージを伝えるとしたら？',
-            //「働く」を切り取るQ&A
-            'why_now_work'  => 'Q4.今の仕事を選んだきっかけは？？',
-            'what_work' =>  'Q5.あなたにとって「働く」とは？',
-            'reward_work' =>  'Q6.働いていてやりがいを感じる瞬間は殿ような瞬間ですか？',
-            //価値観深掘りQ&A
-            'solve_complex'  => 'Q7.過去にあった悩み・コンプレックスはどう解決してきましたか？',
-            'change_myself'  => 'Q8.「これに出会って自分は変わった！」と思えるもの（人）は何（誰）ですか？',
-            '6month_todo' =>  'Q9.あなたが、あと６ヶ月しか生きられないとしたら何をしますか？',
-            'todo_till_death' =>  'Q10.死ぬまでに実現したいことは？',
-            'last_message' => '最後に、進路に悩む10代にメッセージを',
-    
-        ];
-    }
 }
