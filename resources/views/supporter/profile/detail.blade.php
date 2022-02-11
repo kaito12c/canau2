@@ -20,10 +20,10 @@
 
                         <div class="flex text-center lg:justify-center text-sm mt-4">
                             {{-- <img src="../images/lary-avatar.svg" alt="Lary avatar"> --}}
-                            <div class="ml-3 text-center">
+                            {{-- <div class="ml-3 text-center">
                                 <h5 class="font-bold text-xl">{{ $session->first()->supporter->name }}</h5>
                                 <h6>{{ $session->first()->company_name }}</h6>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="bg-blue-50 my-6 p-3 text-left rounded-xl"> 
                             <div class="font-bold text-xl my-2">プロフィール</div>
@@ -80,7 +80,7 @@
                         <h1 class="font-bold text-3xl lg:text-4xl mt-8 px-3">
                             {{ $session->first()->supporter->name }}さん図鑑
                         </h1>
-                        <p class="text-xl mt-2 px-3">{{ $session->first()->title }}</p>
+                        <p class="text-xl mt-2 px-3">{{ $session->first()->company_name }}   {{ $session->first()->title }}</p>
                         <div class="px-3">
                             <x-answer-topic>中高時代の振り返りQ&A</x-answer-topic>
                                 <x-question>Q1.中高時代にやってよかったと思うことは？</x-question>
