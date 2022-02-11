@@ -6,7 +6,8 @@ use App\Models\Tag;
 use App\Models\Meeting;
 use App\Models\Session;
 use App\Models\Supporter;
-use App\Mail\RegisterMail;
+use App\Http\Controllers\Supporter\Mail\RegisterMail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
