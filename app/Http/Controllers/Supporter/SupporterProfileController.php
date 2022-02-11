@@ -44,8 +44,9 @@ class SupporterProfileController extends Controller
 
     }
 
-    public function store(Session $id)
+    public function store()
     {
+        // dd('あ');
         $attributes = request()->validate([
             // 'supporter_id' => 'required',
             // 'name' => 'required',

@@ -94,8 +94,8 @@
                             class="rounded-md shadow-sm border-gray-300 
                                     focus:border-indigo-300 focus:ring 
                                     focus:ring-indigo-200 focus:ring-opacity-50 w-full p-2">
-                    @foreach ($meetings as $meeting)
-                    <option value="{{$meeting->start_at}}" id="{{$meeting->start_at}}">{{ $meeting->start_at_jp }}</option>
+                    @foreach ($meetings as $session)
+                    <option value="{{$session->start_at}}" id="{{$session->start_at}}">{{ $session->start_at_jp }}</option>
                     @endforeach
                     </select>
                   </div>
