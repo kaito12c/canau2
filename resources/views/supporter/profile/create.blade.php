@@ -3,7 +3,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center py-6 sm:pt-0 bg-gray-100">
         <div class="text-xl font-bold my-8 text-blue-400">自分図鑑登録</div>
         <div class="w-full sm:max-w-lg mt-2 px-4 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" heading="自分史登録">
-            <form action="/supporter/profile/create" method="post" enctype="multipart/form-data">
+            <form action="{{ route('supporter.profile.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <x-profile-topic>基本情報</x-profile-topic>
                 <x-form.input name="company_name"  label="会社名" placeholder="株式会社canau"/>
@@ -95,7 +95,7 @@
                                     focus:border-indigo-300 focus:ring 
                                     focus:ring-indigo-200 focus:ring-opacity-50 w-full p-2">
                     @foreach ($meetings as $meeting)
-                    <option value="{{$meeting->start_at}}" id="{{$meeting->start_at}}">{{ $meeting->start_at_jp }}</option>
+                    <option value="{{$meeting->smeeting->tart_at}}" id="{{$meeting->smeeting->tart_at}}">{{ $meeting->meeting->start_at_jp }}</option>
                     @endforeach
                     </select>
                   </div>
